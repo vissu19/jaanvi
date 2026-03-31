@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,438 +18,433 @@
       --shadow: 0 18px 50px rgba(77, 37, 24, 0.15);
       --radius: 28px;
       --max: 1120px;
-    }
+    }* { box-sizing: border-box; }
 
-    * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-    html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(231, 199, 125, 0.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(141, 27, 53, 0.10), transparent 20%),
+    linear-gradient(180deg, #fffaf4 0%, #f7efe4 35%, #f4eadf 100%);
+  line-height: 1.6;
+}
 
-    body {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(231, 199, 125, 0.18), transparent 28%),
-        radial-gradient(circle at top right, rgba(141, 27, 53, 0.10), transparent 20%),
-        linear-gradient(180deg, #fffaf4 0%, #f7efe4 35%, #f4eadf 100%);
-      line-height: 1.6;
-    }
+a { color: inherit; text-decoration: none; }
 
-    a { color: inherit; text-decoration: none; }
+.page-border {
+  position: fixed;
+  inset: 14px;
+  border: 1.5px solid rgba(199, 154, 59, 0.55);
+  pointer-events: none;
+  z-index: 50;
+  border-radius: 24px;
+}
 
-    .page-border {
-      position: fixed;
-      inset: 14px;
-      border: 1.5px solid rgba(199, 154, 59, 0.55);
-      pointer-events: none;
-      z-index: 50;
-      border-radius: 24px;
-    }
+.page-border::before,
+.page-border::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(199, 154, 59, 0.3);
+  border-radius: 20px;
+}
 
-    .page-border::before,
-    .page-border::after {
-      content: "";
-      position: absolute;
-      inset: 8px;
-      border: 1px solid rgba(199, 154, 59, 0.3);
-      border-radius: 20px;
-    }
+.top-ornament,
+.bottom-ornament {
+  text-align: center;
+  letter-spacing: 0.35rem;
+  color: var(--gold);
+  font-size: 1.15rem;
+  opacity: 0.9;
+  user-select: none;
+}
 
-    .top-ornament,
-    .bottom-ornament {
-      text-align: center;
-      letter-spacing: 0.35rem;
-      color: var(--gold);
-      font-size: 1.15rem;
-      opacity: 0.9;
-      user-select: none;
-    }
+.top-ornament { padding-top: 24px; }
+.bottom-ornament { padding: 18px 0 36px; }
 
-    .top-ornament { padding-top: 24px; }
-    .bottom-ornament { padding: 18px 0 36px; }
+.wrap {
+  width: min(calc(100% - 32px), var(--max));
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
 
-    .wrap {
-      width: min(calc(100% - 32px), var(--max));
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
+.hero {
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  padding: 28px 0 42px;
+}
 
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      align-items: center;
-      padding: 28px 0 42px;
-    }
+.hero-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,249,242,0.92));
+  border: 1px solid var(--border);
+  border-radius: 36px;
+  box-shadow: var(--shadow);
+  padding: 34px 34px 28px;
+}
 
-    .hero-card {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,249,242,0.92));
-      border: 1px solid var(--border);
-      border-radius: 36px;
-      box-shadow: var(--shadow);
-      padding: 34px 34px 28px;
-    }
+.hero-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(231, 199, 125, 0.18), transparent 16%),
+    radial-gradient(circle at 85% 12%, rgba(107, 16, 32, 0.07), transparent 18%),
+    radial-gradient(circle at 50% 100%, rgba(231, 199, 125, 0.15), transparent 24%);
+  pointer-events: none;
+}
 
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 15% 10%, rgba(231, 199, 125, 0.18), transparent 16%),
-        radial-gradient(circle at 85% 12%, rgba(107, 16, 32, 0.07), transparent 18%),
-        radial-gradient(circle at 50% 100%, rgba(231, 199, 125, 0.15), transparent 24%);
-      pointer-events: none;
-    }
+.hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 26px;
+  align-items: center;
+}
 
-    .hero-inner {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 26px;
-      align-items: center;
-    }
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--maroon-2);
+  margin-bottom: 10px;
+  font-weight: bold;
+}
 
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.3rem;
-      font-size: 0.8rem;
-      color: var(--maroon-2);
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
+h1 {
+  margin: 0;
+  font-size: clamp(2.8rem, 8vw, 5.6rem);
+  line-height: 0.95;
+  color: var(--maroon);
+  letter-spacing: 0.02em;
+}
 
-    h1 {
-      margin: 0;
-      font-size: clamp(2.8rem, 8vw, 5.6rem);
-      line-height: 0.95;
-      color: var(--maroon);
-      letter-spacing: 0.02em;
-    }
+.subhead {
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  margin: 14px 0 8px;
+  color: var(--gold);
+  font-weight: bold;
+}
 
-    .subhead {
-      font-size: clamp(1.15rem, 2.2vw, 1.45rem);
-      margin: 14px 0 8px;
-      color: var(--gold);
-      font-weight: bold;
-    }
+.guru {
+  margin: 0 0 22px;
+  font-size: 1.08rem;
+  color: var(--muted);
+}
 
-    .guru {
-      margin: 0 0 22px;
-      font-size: 1.08rem;
-      color: var(--muted);
-    }
+.hero-copy {
+  max-width: 700px;
+}
 
-    .hero-copy {
-      max-width: 700px;
-    }
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 28px 0 26px;
+}
 
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin: 28px 0 26px;
-    }
+.info-box {
+  background: rgba(255,255,255,0.68);
+  border: 1px solid rgba(199, 154, 59, 0.24);
+  border-radius: 22px;
+  padding: 16px 18px;
+  backdrop-filter: blur(2px);
+}
 
-    .info-box {
-      background: rgba(255,255,255,0.68);
-      border: 1px solid rgba(199, 154, 59, 0.24);
-      border-radius: 22px;
-      padding: 16px 18px;
-      backdrop-filter: blur(2px);
-    }
+.info-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18rem;
+  color: var(--maroon-2);
+  margin-bottom: 8px;
+  font-weight: bold;
+}
 
-    .info-label {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18rem;
-      color: var(--maroon-2);
-      margin-bottom: 8px;
-      font-weight: bold;
-    }
+.info-text {
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.55;
+}
 
-    .info-text {
-      font-size: 1rem;
-      color: var(--text);
-      line-height: 1.55;
-    }
+.actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
 
-    .actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-weight: bold;
-      letter-spacing: 0.03em;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    }
+.btn:hover { transform: translateY(-2px); }
 
-    .btn:hover { transform: translateY(-2px); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--maroon), var(--maroon-2));
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(107, 16, 32, 0.22);
+}
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--maroon), var(--maroon-2));
-      color: #fff;
-      box-shadow: 0 10px 24px rgba(107, 16, 32, 0.22);
-    }
+.btn-secondary {
+  background: rgba(255,255,255,0.72);
+  color: var(--maroon);
+  border-color: rgba(107, 16, 32, 0.14);
+}
 
-    .btn-secondary {
-      background: rgba(255,255,255,0.72);
-      color: var(--maroon);
-      border-color: rgba(107, 16, 32, 0.14);
-    }
+.visual {
+  position: relative;
+  display: grid;
+  gap: 18px;
+}
 
-    .visual {
-      position: relative;
-      display: grid;
-      gap: 18px;
-    }
+.lotus-card,
+.countdown-card {
+  background: linear-gradient(180deg, rgba(107,16,32,0.96), rgba(82,10,26,0.96));
+  color: #fff8ee;
+  border-radius: 28px;
+  padding: 22px;
+  box-shadow: 0 18px 34px rgba(78, 17, 29, 0.25);
+  border: 1px solid rgba(231, 199, 125, 0.28);
+}
 
-    .lotus-card,
-    .countdown-card {
-      background: linear-gradient(180deg, rgba(107,16,32,0.96), rgba(82,10,26,0.96));
-      color: #fff8ee;
-      border-radius: 28px;
-      padding: 22px;
-      box-shadow: 0 18px 34px rgba(78, 17, 29, 0.25);
-      border: 1px solid rgba(231, 199, 125, 0.28);
-    }
+.lotus-card {
+  min-height: 340px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  position: relative;
+}
 
-    .lotus-card {
-      min-height: 340px;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      position: relative;
-    }
+.lotus-card::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(231, 199, 125, 0.24);
+  border-radius: 22px;
+}
 
-    .lotus-card::before {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border: 1px solid rgba(231, 199, 125, 0.24);
-      border-radius: 22px;
-    }
+.mandala {
+  width: min(100%, 320px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  position: relative;
+  background:
+    radial-gradient(circle, rgba(231,199,125,0.17) 0 26%, transparent 27%),
+    radial-gradient(circle, rgba(231,199,125,0.1) 0 43%, transparent 44%),
+    radial-gradient(circle, rgba(255,255,255,0.07), transparent 68%);
+  border: 1px solid rgba(231,199,125,0.24);
+}
 
-    .mandala {
-      width: min(100%, 320px);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      position: relative;
-      background:
-        radial-gradient(circle, rgba(231,199,125,0.17) 0 26%, transparent 27%),
-        radial-gradient(circle, rgba(231,199,125,0.1) 0 43%, transparent 44%),
-        radial-gradient(circle, rgba(255,255,255,0.07), transparent 68%);
-      border: 1px solid rgba(231,199,125,0.24);
-    }
+.mandala::before {
+  content: "✦";
+  position: absolute;
+  color: var(--gold-soft);
+  font-size: clamp(3rem, 8vw, 4.8rem);
+  top: 18%;
+}
 
-    .mandala::before {
-      content: "✦";
-      position: absolute;
-      color: var(--gold-soft);
-      font-size: clamp(3rem, 8vw, 4.8rem);
-      top: 18%;
-    }
+.mandala::after {
+  content: "✿";
+  position: absolute;
+  color: var(--gold-soft);
+  font-size: clamp(4rem, 10vw, 6rem);
+  bottom: 13%;
+}
 
-    .mandala::after {
-      content: "✿";
-      position: absolute;
-      color: var(--gold-soft);
-      font-size: clamp(4rem, 10vw, 6rem);
-      bottom: 13%;
-    }
+.mandala-text {
+  text-align: center;
+  z-index: 2;
+  padding: 0 18px;
+}
 
-    .mandala-text {
-      text-align: center;
-      z-index: 2;
-      padding: 0 18px;
-    }
+.mandala-text .small {
+  font-size: 0.9rem;
+  letter-spacing: 0.22rem;
+  text-transform: uppercase;
+  color: rgba(255, 248, 238, 0.78);
+  margin-bottom: 8px;
+}
 
-    .mandala-text .small {
-      font-size: 0.9rem;
-      letter-spacing: 0.22rem;
-      text-transform: uppercase;
-      color: rgba(255, 248, 238, 0.78);
-      margin-bottom: 8px;
-    }
+.mandala-text .big {
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  color: var(--gold-soft);
+  line-height: 1.2;
+  font-weight: bold;
+}
 
-    .mandala-text .big {
-      font-size: clamp(1.6rem, 4vw, 2.3rem);
-      color: var(--gold-soft);
-      line-height: 1.2;
-      font-weight: bold;
-    }
+.countdown-label {
+  text-transform: uppercase;
+  letter-spacing: 0.24rem;
+  font-size: 0.78rem;
+  color: rgba(255, 248, 238, 0.76);
+  margin-bottom: 14px;
+  font-weight: bold;
+}
 
-    .countdown-label {
-      text-transform: uppercase;
-      letter-spacing: 0.24rem;
-      font-size: 0.78rem;
-      color: rgba(255, 248, 238, 0.76);
-      margin-bottom: 14px;
-      font-weight: bold;
-    }
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
 
-    .countdown-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-    }
+.count {
+  background: rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 14px 8px;
+  text-align: center;
+  border: 1px solid rgba(231, 199, 125, 0.14);
+}
 
-    .count {
-      background: rgba(255,255,255,0.08);
-      border-radius: 18px;
-      padding: 14px 8px;
-      text-align: center;
-      border: 1px solid rgba(231, 199, 125, 0.14);
-    }
+.count-number {
+  display: block;
+  font-size: clamp(1.2rem, 2.8vw, 1.8rem);
+  font-weight: bold;
+  color: var(--gold-soft);
+  line-height: 1;
+}
 
-    .count-number {
-      display: block;
-      font-size: clamp(1.2rem, 2.8vw, 1.8rem);
-      font-weight: bold;
-      color: var(--gold-soft);
-      line-height: 1;
-    }
+.count-name {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12rem;
+  color: rgba(255, 248, 238, 0.8);
+}
 
-    .count-name {
-      display: block;
-      margin-top: 6px;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12rem;
-      color: rgba(255, 248, 238, 0.8);
-    }
+section {
+  padding: 26px 0;
+}
 
-    section {
-      padding: 26px 0;
-    }
+.section-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
 
-    .section-card {
-      background: var(--paper);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 28px;
-    }
+.section-title {
+  margin: 0 0 14px;
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  color: var(--maroon);
+}
 
-    .section-title {
-      margin: 0 0 14px;
-      font-size: clamp(1.7rem, 4vw, 2.5rem);
-      color: var(--maroon);
-    }
+.section-lead {
+  margin: 0 0 18px;
+  color: var(--muted);
+  max-width: 760px;
+}
 
-    .section-lead {
-      margin: 0 0 18px;
-      color: var(--muted);
-      max-width: 760px;
-    }
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
 
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      align-items: stretch;
-    }
+.panel {
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(199, 154, 59, 0.22);
+  border-radius: 22px;
+  padding: 22px;
+  height: 100%;
+}
 
-    .panel {
-      background: rgba(255,255,255,0.65);
-      border: 1px solid rgba(199, 154, 59, 0.22);
-      border-radius: 22px;
-      padding: 22px;
-      height: 100%;
-    }
+.panel h3 {
+  margin: 0 0 10px;
+  color: var(--maroon-2);
+  font-size: 1.2rem;
+}
 
-    .panel h3 {
-      margin: 0 0 10px;
-      color: var(--maroon-2);
-      font-size: 1.2rem;
-    }
+.detail-line {
+  margin: 0 0 10px;
+  color: var(--text);
+}
 
-    .detail-line {
-      margin: 0 0 10px;
-      color: var(--text);
-    }
+.detail-line strong { color: var(--maroon); }
 
-    .detail-line strong { color: var(--maroon); }
+.video-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(199,154,59,0.25);
+  background: #000;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.14);
+}
 
-    .video-wrap {
-      position: relative;
-      width: 100%;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid rgba(199,154,59,0.25);
-      background: #000;
-      aspect-ratio: 16 / 9;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.14);
-    }
+iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
 
-    iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
+.footer {
+  padding: 16px 0 50px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
 
-    .footer {
-      padding: 16px 0 50px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
+.monogram {
+  margin-top: 10px;
+  color: var(--gold);
+  font-size: 1.2rem;
+  letter-spacing: 0.3rem;
+}
 
-    .monogram {
-      margin-top: 10px;
-      color: var(--gold);
-      font-size: 1.2rem;
-      letter-spacing: 0.3rem;
-    }
+@media (max-width: 900px) {
+  .hero-inner,
+  .two-col {
+    grid-template-columns: 1fr;
+  }
 
-    @media (max-width: 900px) {
-      .hero-inner,
-      .two-col {
-        grid-template-columns: 1fr;
-      }
+  .hero-card {
+    padding: 24px 20px 22px;
+  }
 
-      .hero-card {
-        padding: 24px 20px 22px;
-      }
+  .countdown-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
-      .countdown-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
+@media (max-width: 640px) {
+  .page-border { inset: 8px; border-radius: 18px; }
+  .info-grid { grid-template-columns: 1fr; }
+  .section-card { padding: 22px 18px; }
+  .top-ornament,
+  .bottom-ornament {
+    letter-spacing: 0.18rem;
+    font-size: 0.95rem;
+  }
+}
 
-    @media (max-width: 640px) {
-      .page-border { inset: 8px; border-radius: 18px; }
-      .info-grid { grid-template-columns: 1fr; }
-      .section-card { padding: 22px 18px; }
-      .top-ornament,
-      .bottom-ornament {
-        letter-spacing: 0.18rem;
-        font-size: 0.95rem;
-      }
-    }
   </style>
 </head>
 <body>
-  <div class="page-border" aria-hidden="true"></div>
-
-  <div class="top-ornament">✦ ✦ ✦ ✿ ✦ ✦ ✦</div>
-
-  <header class="hero" id="home">
+  <div class="page-border" aria-hidden="true"></div>  <div class="top-ornament">✦ ✦ ✦ ✿ ✦ ✦ ✦</div>  <header class="hero" id="home">
     <div class="wrap">
       <div class="hero-card">
         <div class="hero-inner">
@@ -458,121 +452,111 @@
             <div class="eyebrow">Bharatanatyam Arangetram</div>
             <h1>Jaanvi<br />Kottapalli</h1>
             <div class="subhead">Sunday, 21st June 2026</div>
-            <p class="guru">Disciple of Guru Smt Kripa Baskaran</p>
-
-            <div class="info-grid">
-              <div class="info-box">
-                <div class="info-label">Where</div>
-                <div class="info-text">
-                  Saber Center for Performing Arts<br />
-                  Franklin High School<br />
-                  8222 S 51st St, Franklin, WI 53132
-                </div>
-              </div>
-              <div class="info-box">
-                <div class="info-label">Celebrate</div>
-                <div class="info-text">
-                  A graceful milestone in classical dance, honoring dedication, tradition, and artistic expression.
-                </div>
-              </div>
-            </div>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#details">View Event Details</a>
-              <a class="btn btn-secondary" href="#video">Watch Invite Video</a>
+            <p class="guru">Disciple of Guru Smt Kripa Baskaran</p><div class="info-grid">
+          <div class="info-box">
+            <div class="info-label">Where</div>
+            <div class="info-text">
+              Saber Center for Performing Arts<br />
+              Franklin High School<br />
+              8222 S 51st St, Franklin, WI 53132
             </div>
           </div>
-
-          <div class="visual">
-            <div class="lotus-card">
-              <div class="mandala">
-                <div class="mandala-text">
-                  <div class="small">With Blessings</div>
-                  <div class="big">An Evening of<br />Bhavam, Ragam<br />and Natyam</div>
-                </div>
-              </div>
+          <div class="info-box">
+            <div class="info-label">Celebrate</div>
+            <div class="info-text">
+              A graceful milestone in classical dance, honoring dedication, tradition, and artistic expression.
             </div>
+          </div>
+        </div>
 
-            <div class="countdown-card">
-              <div class="countdown-label">Countdown to Arangetram</div>
-              <div class="countdown-grid" id="countdown">
-                <div class="count"><span class="count-number" id="days">--</span><span class="count-name">Days</span></div>
-                <div class="count"><span class="count-number" id="hours">--</span><span class="count-name">Hours</span></div>
-                <div class="count"><span class="count-number" id="minutes">--</span><span class="count-name">Minutes</span></div>
-                <div class="count"><span class="count-number" id="seconds">--</span><span class="count-name">Seconds</span></div>
-              </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="#details">View Event Details</a>
+          <a class="btn btn-secondary" href="#video">Watch Invite Video</a>
+        </div>
+      </div>
+
+      <div class="visual">
+        <div class="lotus-card">
+          <div class="mandala">
+            <div class="mandala-text">
+              <div class="small">With Blessings</div>
+              <div class="big">An Evening of<br />Bhavam, Ragam<br />and Natyam</div>
             </div>
+          </div>
+        </div>
+
+        <div class="countdown-card">
+          <div class="countdown-label">Countdown to Arangetram</div>
+          <div class="countdown-grid" id="countdown">
+            <div class="count"><span class="count-number" id="days">--</span><span class="count-name">Days</span></div>
+            <div class="count"><span class="count-number" id="hours">--</span><span class="count-name">Hours</span></div>
+            <div class="count"><span class="count-number" id="minutes">--</span><span class="count-name">Minutes</span></div>
+            <div class="count"><span class="count-number" id="seconds">--</span><span class="count-name">Seconds</span></div>
           </div>
         </div>
       </div>
     </div>
-  </header>
+  </div>
+</div>
 
-  <main>
+  </header>  <main>
     <section id="details">
       <div class="wrap">
         <div class="section-card">
           <h2 class="section-title">Event Details</h2>
           <p class="section-lead">
             Please join us to celebrate Jaanvi Kottapalli’s Arangetram, a treasured debut performance that marks years of disciplined training and devotion to the art of Bharatanatyam.
+          </p><div class="two-col">
+        <div class="panel">
+          <h3>The Performer</h3>
+          <p class="detail-line"><strong>Name:</strong> Jaanvi Kottapalli</p>
+          <p class="detail-line"><strong>Occasion:</strong> Bharatanatyam Arangetram</p>
+          <p class="detail-line"><strong>Disciple of:</strong> Guru Smt Kripa Baskaran</p>
+          <p class="detail-line">
+            Arangetram is a significant milestone in a Bharatanatyam dancer’s journey, symbolizing dedication, growth, and the blessing to perform before family, friends, and the wider community.
           </p>
+        </div>
 
-          <div class="two-col">
-            <div class="panel">
-              <h3>The Performer</h3>
-              <p class="detail-line"><strong>Name:</strong> Jaanvi Kottapalli</p>
-              <p class="detail-line"><strong>Occasion:</strong> Bharatanatyam Arangetram</p>
-              <p class="detail-line"><strong>Disciple of:</strong> Guru Smt Kripa Baskaran</p>
-              <p class="detail-line">
-                Arangetram is a significant milestone in a Bharatanatyam dancer’s journey, symbolizing dedication, growth, and the blessing to perform before family, friends, and the wider community.
-              </p>
-            </div>
-
-            <div class="panel">
-              <h3>Venue & Date</h3>
-              <p class="detail-line"><strong>Date:</strong> Sunday, 21st June 2026</p>
-              <p class="detail-line"><strong>Venue:</strong> Saber Center for Performing Arts</p>
-              <p class="detail-line"><strong>Location:</strong> Franklin High School</p>
-              <p class="detail-line"><strong>Address:</strong> 8222 S 51st St, Franklin, WI 53132</p>
-              <p class="detail-line">
-                <a class="btn btn-secondary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Saber+Center+for+Performing+Arts+Franklin+High+School+8222+S+51st+St+Franklin+WI+53132">Open Map</a>
-              </p>
-            </div>
-          </div>
+        <div class="panel">
+          <h3>Venue & Date</h3>
+          <p class="detail-line"><strong>Date:</strong> Sunday, 21st June 2026</p>
+          <p class="detail-line"><strong>Venue:</strong> Saber Center for Performing Arts</p>
+          <p class="detail-line"><strong>Location:</strong> Franklin High School</p>
+          <p class="detail-line"><strong>Address:</strong> 8222 S 51st St, Franklin, WI 53132</p>
+          <p class="detail-line">
+            <a class="btn btn-secondary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Saber+Center+for+Performing+Arts+Franklin+High+School+8222+S+51st+St+Franklin+WI+53132">Open Map</a>
+          </p>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="video">
-      <div class="wrap">
-        <div class="section-card">
-          <h2 class="section-title">Invite Video</h2>
-          <p class="section-lead">
-            A special video invitation to the celebration.
-          </p>
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/3QG8Ca148u0"
-              title="Jaanvi Kottapalli Arangetram Invite Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
-          </div>
-        </div>
+<section id="video">
+  <div class="wrap">
+    <div class="section-card">
+      <h2 class="section-title">Invite Video</h2>
+      <p class="section-lead">
+        A special video invitation to the celebration.
+      </p>
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/3QG8Ca148u0"
+          title="Jaanvi Kottapalli Arangetram Invite Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
       </div>
-    </section>
-  </main>
+    </div>
+  </div>
+</section>
 
-  <footer class="footer">
+  </main>  <footer class="footer">
     <div class="wrap">
       With warm regards and blessings, we invite you to celebrate this special milestone.
       <div class="monogram">✦ JAANVI ✦</div>
     </div>
-  </footer>
-
-  <div class="bottom-ornament">✦ ✦ ✦ ✿ ✦ ✦ ✦</div>
-
-  <script>
+  </footer>  <div class="bottom-ornament">✦ ✦ ✦ ✿ ✦ ✦ ✦</div>  <script>
     (function () {
       const target = new Date("2026-06-21T17:00:00").getTime();
       const ids = {
@@ -608,6 +592,5 @@
       updateCountdown();
       setInterval(updateCountdown, 1000);
     })();
-  </script>
-</body>
+  </script></body>
 </html>
